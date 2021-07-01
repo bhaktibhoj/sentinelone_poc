@@ -1,0 +1,18 @@
+sudo docker login docker.pkg.github.com --username s1customer
+
+8d0acb7d2ddbf35741efb0112f64995787e728fd
+
+kubectl create namespace sentinelone
+
+kubectl create secret -n sentinelone docker-registry sentinelone --docker-server=gcr.io --docker-username=bhaktibhoj --docker-password=8d0acb7d2ddbf35741efb0112f64995787e728fd --docker-email=bhakti.bhoj@triarqhealth.com
+
+sudo docker pull docker.pkg.github.com/s1-agents/cwpp_agent/s1agent:ea-5.0.1
+
+sudo docker tag docker.pkg.github.com/s1-agents/cwpp_agent/s1agent:ea-5.0.1  gcr.io/qpathways-staging/s1agent:v3
+
+sudo docker push gcr.io/qpathways-staging/s1agent:v3
+
+sudo docker pull docker.pkg.github.com/s1-agents/cwpp_agent/s1helper:ea-5.0.1
+
+sudo docker tag docker.pkg.github.com/s1-agents/cwpp_agent/s1helper:ea-5.0.1 gcr.io/qpathways-staging/s1helper:v3
+docker push gcr.io/qpathways-staging/s1helper:v3
